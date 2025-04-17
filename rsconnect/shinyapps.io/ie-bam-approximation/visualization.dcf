@@ -1,0 +1,12 @@
+name: visualization
+title: visualization
+username: ie-bam-approximation
+account: ie-bam-approximation
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14549224
+bundleId: 10133587
+url: https://ie-bam-approximation.shinyapps.io/visualization/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

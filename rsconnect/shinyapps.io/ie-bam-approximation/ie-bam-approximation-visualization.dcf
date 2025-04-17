@@ -1,0 +1,12 @@
+name: ie-bam-approximation-visualization
+title: ie-bam-approximation-visualization
+username: ie-bam-approximation
+account: ie-bam-approximation
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14548105
+bundleId: 10132842
+url: https://ie-bam-approximation.shinyapps.io/ie-bam-approximation-visualization/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

@@ -9,7 +9,8 @@ library(reshape2)
 # Load module files
 source("modules/lecture_01/euler-circle-app.R")
 source("modules/lecture_01/euler-wave-app.R")
-source("modules/lecture_02/sound-wave-app.R")
+source("modules/lecture_02/fourier-explorer-app.R")
+source("modules/lecture_02/spectrum-viewer-app.R")
 
 ui <- fluidPage(
     navbarPage("Lecture Visualizations",
@@ -23,18 +24,20 @@ ui <- fluidPage(
                
                tabPanel("Lecture 02",
                         tabsetPanel(
-                            tabPanel("Sound Wave Analyzer", soundAppUI("sound1"))
+                            tabPanel("Fourier Explorer", fourierExplorerAppUI("fourier1")),
+                            tabPanel("Spectrum Viewer", spectrumViewerAppUI("spectrum1"))
                         )
                )
                
-               # Add more lectures here...
+               # Additional lectures can go here...
     )
 )
 
 server <- function(input, output, session) {
     eulerCircleAppServer("circle1")
     eulerWaveAppServer("wave1")
-    soundAppServer("sound1")
+    fourierExplorerAppServer("fourier1")
+    spectrumViewerAppServer("spectrum1")
 }
 
 shinyApp(ui, server)

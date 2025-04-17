@@ -5,7 +5,7 @@ account: ie-bam-approximation
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 14548105
-bundleId: 10132842
+bundleId: 10133020
 url: https://ie-bam-approximation.shinyapps.io/ie-bam-approximation-visualization/
 version: 1
 asMultiple: FALSE

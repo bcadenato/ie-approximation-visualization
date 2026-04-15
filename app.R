@@ -31,6 +31,7 @@ source("modules/lecture_05/sampling-aliasing.R")
 # Lecture 06
 source("modules/lecture_06/dft-basis.R")
 source("modules/lecture_06/dft-epicycle.R")
+source("modules/lecture_06/linear-circular-convolution.R")
 
 # Lecture 07
 source("modules/lecture_07/dct-ii.R")
@@ -87,7 +88,8 @@ ui <- fluidPage(
                tabPanel("Lecture 06",
                         tabsetPanel(
                             tabPanel("DFT Basis Vectors", dftBasisAppUI("dft1")),
-                            tabPanel("DFT Epicycles", dftEpicycleAppUI("dft2"))
+                            tabPanel("DFT Epicycles", dftEpicycleAppUI("dft2")),
+                            tabPanel("Linear vs Circular Convolution", linearCircularConvAppUI("linCircConv1"))
                         )
                ),
                
@@ -142,6 +144,7 @@ server <- function(input, output, session) {
     # Lecture 06
     dftBasisAppServer("dft1")
     dftEpicycleAppServer("dft2")
+    linearCircularConvAppServer("linCircConv1")
     
     # Lecture 07
     dctIiAppServer("dct1")

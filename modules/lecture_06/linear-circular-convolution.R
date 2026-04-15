@@ -58,7 +58,7 @@ linearCircularConvAppServer <- function(id) {
         values_x <- reactiveVal(as.numeric(strsplit("1,2,3,4,5,6,7,8", ",")[[
             1
         ]]))
-        values_h <- reactiveVal(as.numeric(strsplit("1,0,0,0", ",")[[1]]))
+        values_h <- reactiveVal(as.numeric(strsplit("1,0,0,1", ",")[[1]]))
 
         observeEvent(input$recalc, {
             x <- suppressWarnings(as.numeric(strsplit(input$signal_x, ",")[[

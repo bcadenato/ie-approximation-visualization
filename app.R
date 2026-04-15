@@ -17,6 +17,13 @@ source("modules/lecture_01/euler-wave-app.R")
 source("modules/lecture_02/fourier-explorer-app.R")
 source("modules/lecture_02/spectrum-viewer-app.R")
 
+# Lecture 03
+source("modules/lecture_03/frequency-shifting.R")
+source("modules/lecture_03/amplitude-modulation.R")
+
+# Lecture 04
+source("modules/lecture_04/passband-convolution.R")
+
 # Lecture 05
 source("modules/lecture_05/sampling-fourier-transform.R")
 source("modules/lecture_05/sampling-aliasing.R")
@@ -24,6 +31,21 @@ source("modules/lecture_05/sampling-aliasing.R")
 # Lecture 06
 source("modules/lecture_06/dft-basis.R")
 source("modules/lecture_06/dft-epicycle.R")
+
+# Lecture 07
+source("modules/lecture_07/dct-ii.R")
+source("modules/lecture_07/dct-basis-components.R")
+source("modules/lecture_07/jpeg-compression.R")
+
+# Lecture 08
+source("modules/lecture_08/time-resolution-motivation.R")
+source("modules/lecture_08/wft-explorer.R")
+source("modules/lecture_08/wft-spectrogram.R")
+source("modules/lecture_08/gabor-spectrogram.R")
+
+# Lecture 09
+source("modules/lecture_09/stft-vs-cwt.R")
+source("modules/lecture_09/mra-pyramid.R")
 
 ui <- fluidPage(
     navbarPage("Lecture Visualizations",
@@ -42,6 +64,19 @@ ui <- fluidPage(
                         )
                ),
                
+               tabPanel("Lecture 03",
+                        tabsetPanel(
+                            tabPanel("Exponential Sinusoids", frequencyShiftingAppUI("freqShift1")),
+                            tabPanel("Amplitude Modulation", amplitudeModulationAppUI("amMod1"))
+                        )
+               ),
+               
+               tabPanel("Lecture 04",
+                        tabsetPanel(
+                            tabPanel("Passband LTI", passbandLtiAppUI("passbandLti1"))
+                        )
+               ),
+               
                tabPanel("Lecture 05",
                         tabsetPanel(
                             tabPanel("Sampled FFT", sampledFftAppUI("fft1")),
@@ -54,21 +89,74 @@ ui <- fluidPage(
                             tabPanel("DFT Basis Vectors", dftBasisAppUI("dft1")),
                             tabPanel("DFT Epicycles", dftEpicycleAppUI("dft2"))
                         )
-               )
+               ),
                
+               tabPanel("Lecture 07",
+                        tabsetPanel(
+                            tabPanel("DCT II", dctIiAppUI("dct1")),
+                            tabPanel("DCT Basis Components", dctBasis2dAppUI("dct2d")),
+                            tabPanel("JPEG Compression", jpegCompressionAppUI("imgDct"))
+                        )
+               ),
+               
+               tabPanel("Lecture 08",
+                        tabsetPanel(
+                            tabPanel("Time Resolution", fourierTransformBlocksAppUI("timeResolution")),
+                            tabPanel("WFT Explorer", windowedFourierTransformAppUI("wftExplorer")),
+                            tabPanel("STFT Viewer", wftViewerAppUI("stftViewer")),
+                            tabPanel("Gabor Transform", manualSpectrogramAppUI("gaborTransform"))
+                        )
+               ),
+               
+               tabPanel("Lecture 09",
+                        tabsetPanel(
+                            tabPanel("STFT vs CWT", timeFrequencyAnalysisAppUI("stftCwt")),
+                            tabPanel("MRA Decomposition", waveletDecompositionAppUI("mraPyramid"))
+                        )
+               )
                # Additional lectures can go here...
     )
 )
 
 server <- function(input, output, session) {
+    
+    # Lecture 01
     eulerCircleAppServer("circle1")
     eulerWaveAppServer("wave1")
+    
+    # Lecture 02
     fourierExplorerAppServer("fourier1")
     spectrumViewerAppServer("spectrum1")
+    
+    # Lecture 03
+    frequencyShiftingAppServer("freqShift1")
+    amplitudeModulationAppServer("amMod1")
+    
+    # Lecture 04
+    passbandLtiAppServer("passbandLti1")
+    
+    # Lecture 05
     sampledFftAppServer("fft1")
     aliasingAppServer("alias1")
+    
+    # Lecture 06
     dftBasisAppServer("dft1")
     dftEpicycleAppServer("dft2")
+    
+    # Lecture 07
+    dctIiAppServer("dct1")
+    dctBasis2dAppServer("dct2d")
+    jpegCompressionAppServer("imgDct")
+    
+    # Lecture 08
+    fourierTransformBlocksAppServer("timeResolution")
+    windowedFourierTransformAppServer("wftExplorer")
+    wftViewerAppServer("stftViewer")
+    manualSpectrogramAppServer("gaborTransform")
+    
+    # Lecture 09
+    timeFrequencyAnalysisAppServer("stftCwt")
+    waveletDecompositionAppServer("mraPyramid")
 }
 
 shinyApp(ui, server)
